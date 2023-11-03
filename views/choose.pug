@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}.
+  h3 Pulling random images:
+  - var image_names =["Casualshoe.jpg", "Eccoshoe.jpg","Runshoe.jpg","Tennisshoe.jpg", "Walkshoe.jpg"];
+  - for(let j=0; j<3; j++){
+     - let rand=Math.floor(Math.random()*5)
+     img(src=`/images/${image_names[rand]}` alt=`${rand}` height="300px" width="300px")
+  - }

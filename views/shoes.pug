@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}.
+
+  -
+   let results = [
+    { brand: 'Nike', color: 'White', size: 10 },
+    { brand: 'USPOLO', color: 'Green', size: 9},
+    { brand: 'PUMA', color: 'SkyBlue', size: 8}
+   ];
+  div(class = "container-fluid")
+    .row.d-flex.flex-row
+     each shoe,index in results
+       .col-sm-2
+       div(class ="row")
+         div(class="col-sm-2" onclick=`buy(${index})`) #{shoe.brand}
+         div(class="col-sm-2" onclick=`buy(${index})`) #{shoe.color}
+         div(class="col-sm-2" onclick=`buy(${index})`) #{shoe.size}
+  script. 
+    function buy(itemNo){
+      alert(`You purchased item ${itemNo}.`);
+    }
