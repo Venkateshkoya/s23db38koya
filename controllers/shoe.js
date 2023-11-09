@@ -27,3 +27,16 @@ exports.shoe_delete = function(req, res) {
 exports.shoe_update_put = function(req, res) {
  res.send('NOT IMPLEMENTED: shoe update PUT' + req.params.id);
 };
+
+// VIEWS
+// Handle a show all view
+exports.shoe_view_all_Page = async function(req, res) {
+ try{
+ theshoe = await shoe.find();
+ res.render('costumes', { title: 'shoe Search Results', results: theshoe });
+ }
+ catch(err){
+ res.status(500);
+ res.send(`{"error": ${err}}`);
+ } 
+};

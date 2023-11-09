@@ -1,9 +1,6 @@
 var express = require('express');
+const shoe_controllers= require('../controllers/shoe');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('shoes', { title: 'Search Results shoes' });
-});
-
+/* GET shoes */
+router.get('/', shoe_controllers.shoe_view_all_Page );
 module.exports = router;
