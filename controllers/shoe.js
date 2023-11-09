@@ -1,7 +1,15 @@
 var shoe = require('../models/shoe');
 // List of all shoes
-exports.shoe_list = function(req, res) {
-   res.send('NOT IMPLEMENTED: shoe list');
+exports.shoe_list = async function(req, res) {
+    try{
+        theshoe = await shoe.find();
+        res.send(theshoe);
+    }
+    catch(err){
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
+  // res.send('NOT IMPLEMENTED: shoe list');
 };
 // for a specific shoe.
 exports.shoe_detail = function(req, res) {
