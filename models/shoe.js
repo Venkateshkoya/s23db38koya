@@ -4,4 +4,4 @@ brand: String,
 color: String,
 size: Number
 })
-module.exports = mongoose.model("shoes", shoeSchema)
+module.exports = mongoose.model("shoe", shoeSchema)

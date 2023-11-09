@@ -18,7 +18,7 @@ exports.shoe_detail = function(req, res) {
 // Handle Costume create on POST.
 exports.shoe_create_post = async function(req, res) {
     console.log(req.body)
-    let document = new Costume();
+    let document = new shoe();
     // We are looking for a body, since POST does not have query parameters.
     // Even though bodies can be in many different formats, we will be picky
     // and require that it be a json object
@@ -49,7 +49,7 @@ exports.shoe_update_put = function(req, res) {
 exports.shoe_view_all_Page = async function(req, res) {
  try{
  theshoe = await shoe.find();
- res.render('costumes', { title: 'shoe Search Results', results: theshoe });
+ res.render('shoe', { title: 'shoe Search Results', results: theshoe });
  }
  catch(err){
  res.status(500);

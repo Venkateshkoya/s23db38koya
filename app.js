@@ -18,19 +18,19 @@ console.log("Connection to DB succeeded")});
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var shoesRouter = require('./routes/shoes');
+var shoeRouter = require('./routes/shoe');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
-var shoes = require("./models/shoe");
+var shoe = require("./models/shoe");
 var resourceRouter = require('./routes/resource');
 
 async function recreateDB(){
   // Delete everything
-  await shoes.deleteMany();
+  await shoe.deleteMany();
   
-  let instance1 = new shoes({brand:"Nike", color:'White', size:9.50});
-  let instance2 = new shoes({brand: "USPOLO", color:'Green', size:8.50});
-  let instance3 = new shoes({brand: "PUMA", color:'SkyBlue', size:7.50});
+  let instance1 = new shoe({brand:"Nike", color:'White', size:9.50});
+  let instance2 = new shoe({brand: "USPOLO", color:'Green', size:8.50});
+  let instance3 = new shoe({brand: "PUMA", color:'SkyBlue', size:7.50});
 
  instance1.save().then(doc=>{
  console.log("First object saved")}
@@ -65,7 +65,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/shoes', shoesRouter);
+app.use('/shoe', shoeRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
 app.use('/resource', resourceRouter);
