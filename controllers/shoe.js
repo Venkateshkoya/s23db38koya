@@ -12,8 +12,15 @@ exports.shoe_list = async function(req, res) {
   // res.send('NOT IMPLEMENTED: shoe list');
 };
 // for a specific shoe.
-exports.shoe_detail = function(req, res) {
- res.send('NOT IMPLEMENTED: shoe detail: ' + req.params.id);
+exports.shoe_detail = async function(req, res) {
+ console.log("detail" + req.params.id)
+ try {
+ result = await shoe.findById( req.params.id)
+ res.send(result)
+ } catch (error) {
+ res.status(500)
+ res.send(`{"error": document for id ${req.params.id} not found`);
+ }
 };
 // Handle Costume create on POST.
 exports.shoe_create_post = async function(req, res) {
