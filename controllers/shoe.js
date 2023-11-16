@@ -126,3 +126,16 @@ exports.shoe_update_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
    };
+
+exports.shoe_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await shoe.findById(req.query.id)
+    res.render('shoedelete', { title: 'shoe Delete', toShow: 
+   result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };

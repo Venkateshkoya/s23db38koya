@@ -4,14 +4,14 @@ block content
   form(id='shoeForm', action="/resource/shoe", method="POST")
     div.form-group
       label.shoeAttr(for='brand') shoe brand
-      input#brand(type='text', name='brand')
+      input#brand(type='text', name='brand' ,class="shoeAttrInput")
     div.form-group
       label.shoeAttr(for='color') shoe color
-      input#color(type='text', name='color')
+      input#color(type='text', name='color',class="shoeAttrInput")
     div.form-group
       label.shoeAttr(for='size') shoe size
-      input#size(type='number', name='size')
-    input(type="submit")
+      input#size(type='number', name='size',class="shoeAttrInput")
+    input(type="submit" class ="shoeAttrSubmit")
     script.
       document.forms['shoeForm'].addEventListener('submit', (event) => {
         event.preventDefault();

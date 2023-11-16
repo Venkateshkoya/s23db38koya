@@ -1,40 +1,44 @@
 extends layout
 block content
   h1= title
-  - let shoeid = toShow._id
-  - let brand = toShow.brand
-  - let color = toShow.color
-  - let size = toShow.size
-  
-  div.row(class='mb-2')
-    div.mr-1 ID is
-    div #{shoeid}
-  - let actionid = "/resource/shoe/" + shoeid
-  form(id='shoeForm', action= actionid, method="PUT")
-    div.form-group
-      label.shoeAttr(for='brand') shoe brand
-      input#brand(type='text', name='brand', value= brand )
-    div.form-group
-      label.shoeAttr(for='color') shoe color
-      input#color(type='text', name='color', value= color )
-    div.form-group
-      label.shoeAttr(for='size') shoe size
-      input#size(type='number', name='size', value= size )
-    input(type="submit")
-    script.
-      document.forms['shoeForm'].addEventListener('submit', (event) => {
-        event.preventDefault();
-        // TODO do something here to show user that form is being submitted
-        fetch(event.target.action, {
-          method: 'PUT',
-          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-        }).then((resp) => {
-          return resp.json(); // or resp.text() or whatever the server sends
-        }).then((body) => {
-          alert("Update succeeded")
-          // TODO handle body
-        }).catch((error) => {
-          // TODO handle error
-          alert("Update failed " + error)
+  if (toShow == null)
+    h2 No instance to update
+  else
+    - let shoeid = toShow._id
+    - let brand = toShow.brand
+    - let color = toShow.color
+    - let size = toShow.size
+    
+    div.row(class='mb-2')
+      div.mr-1 ID is
+      div #{shoeid}
+    
+    - let actionid = "/resource/shoe/" + shoeid
+    form(id='shoeForm', action= actionid, method="PUT")
+      div.form-group
+        label.shoeAttr(for='brand') shoe brand
+        input#brand(type='text', name='brand', value= brand )
+      div.form-group
+        label.shoeAttr(for='color') shoe color
+        input#color(type='text', name='color', value= color )
+      div.form-group
+        label.shoeAttr(for='size') shoe size
+        input#size(type='number', name='size', value= size )
+      input(type="submit")
+      script.
+        document.forms['shoeForm'].addEventListener('submit', (event) => {
+          event.preventDefault();
+          // TODO do something here to show user that form is being submitted
+          fetch(event.target.action, {
+            method: 'PUT',
+            body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+          }).then((resp) => {
+            return resp.json(); // or resp.text() or whatever the server sends
+          }).then((body) => {
+            alert("Update succeeded")
+            // TODO handle body
+          }).catch((error) => {
+            // TODO handle error
+            alert("Update failed " + error)
+          });
         });
-      });
