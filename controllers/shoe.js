@@ -114,3 +114,15 @@ exports.shoe_create_Page = function (req, res) {
         res.send(`{'error': '${err}'}`);
     }
 };
+
+exports.shoe_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await shoe.findById(req.query.id)
+    res.render('shoeupdate', { title: 'shoe Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };
