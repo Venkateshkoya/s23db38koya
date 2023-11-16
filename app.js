@@ -22,6 +22,7 @@ var shoeRouter = require('./routes/shoe');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
 var shoe = require("./models/shoe");
+//var shoe1Router = require('./controllers/shoe1');
 var resourceRouter = require('./routes/resource');
 
 async function recreateDB(){
@@ -69,6 +70,7 @@ app.use('/shoe', shoeRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
 app.use('/resource', resourceRouter);
+//app.use('/shoedetail', shoe1Router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
