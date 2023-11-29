@@ -15,9 +15,9 @@ const secured = (req, res, next) => {
 /* GET shoes */
 router.get('/', shoe_controllers.shoe_view_all_Page );
 router.get('/detail', shoe_controllers.shoe_view_one_Page);
-router.get('/create', shoe_controllers.shoe_create_Page);
+router.get('/create', secured, shoe_controllers.shoe_create_Page);
 router.get('/update', secured,shoe_controllers.shoe_update_Page);
-router.get('/delete', shoe_controllers.shoe_delete_Page);
+router.get('/delete', secured,shoe_controllers.shoe_delete_Page);
 module.exports = router;
 
 
